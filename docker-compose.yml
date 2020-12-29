@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  dummy_model:
+    container_name: dummy-orderbook
+    image: tensorflow/serving:latest
+    ports:
+      - "8501:8501"
+    volumes:
+      - type: bind 
+        source: /$PWD/dummy-rnn
+        target: /models/dummy-rnn/1/
+    env_file:
+      - .env_file 
+
